@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 497919266511007899}
   - component: {fileID: 3301660621626644827}
   - component: {fileID: 7632859353059498602}
-  - component: {fileID: -710757367019188063}
+  - component: {fileID: -8216493614120207406}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Enemy
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8841417970181298647}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.992, y: -0.042, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -147,7 +147,7 @@ PolygonCollider2D:
       - {x: 0.19591886, y: 0.26295742}
       - {x: 0.1942871, y: 0.16316311}
       - {x: 0.29295772, y: 0.1631631}
---- !u!114 &-710757367019188063
+--- !u!114 &-8216493614120207406
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,6 +156,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8841417970181298647}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74ca16a5978953148bea3feed32db5fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fc6b8d359c1a8c4894ee7429f092293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 4
+  currentC: {r: 0.6156863, g: 0.6156863, b: 0.6156863, a: 0}
