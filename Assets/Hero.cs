@@ -5,9 +5,12 @@ public class Hero : MonoBehaviour
     private Rigidbody2D rd;
     public float speed = 20f;
     public bool mouseControl = true;
-    public Camera c;
+    private Camera c;
     public float speedMulti = 1f;
     public float speedMultiMax = 5f;
+    public GameObject projectile;
+    public float fireRate = 0.2f;
+    private float fireCD = 0f;
 
 
     // Start is called before the first frame update
@@ -28,6 +31,9 @@ public class Hero : MonoBehaviour
             MouseMovement();
         else
             KeyboardMovement();
+
+        if(Input.GetKey(KeyCode.Space))
+            Shoot();
     }
 
     void UniversalControl()
@@ -67,6 +73,16 @@ public class Hero : MonoBehaviour
             speedMulti -= 0.25f * Time.deltaTime;
 
         speedMulti = Mathf.Clamp(speedMulti, 0, speedMultiMax);
+    }
+
+    void Shoot()
+    {
+        var t = Time.time;
+        if(t < fireCD)
+            return;
+        
+        Instantiate(projectile, transform.position, transform.rotation);
+        fireCD = t + fireRate;
     }
 
     void OnTriggerEnter2D(Collider2D c)
