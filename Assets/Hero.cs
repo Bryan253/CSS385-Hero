@@ -4,7 +4,7 @@ public class Hero : MonoBehaviour
 {
     private Rigidbody2D rd;
     public float speed = 20f;
-    public bool mouseControl = true;
+    public static bool mouseControl = true;
     private Camera c;
     public float speedMulti = 1f;
     public float speedMultiMax = 5f;
@@ -83,11 +83,12 @@ public class Hero : MonoBehaviour
         
         Instantiate(projectile, transform.position, transform.rotation);
         fireCD = t + fireRate;
+        Controller.eggCount++;
     }
 
     void OnTriggerEnter2D(Collider2D c)
     {
-        Destroy(c.gameObject);
-        Controller.spawnCount--;
+        c.gameObject.GetComponent<Plane>().SelfDestruct();
+        Controller.heroCollisionCount++;
     }
 }

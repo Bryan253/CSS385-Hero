@@ -15,8 +15,14 @@ public class Plane : MonoBehaviour
     {
         if(hp <= 0)
         {
-            Destroy(this.gameObject, 0);
-            Controller.spawnCount--;
+            SelfDestruct();
         }
+    }
+
+    public void SelfDestruct()
+    {
+        Destroy(this.gameObject);
+        Controller.spawnCount--;
+        Controller.planeDestroyed++;
     }
 }

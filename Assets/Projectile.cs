@@ -25,7 +25,10 @@ public class Projectile : MonoBehaviour
     {
         // Destroy projectile upon exiting the screen
         if(!r.isVisible)
+        {
             Destroy(this.gameObject);
+            Controller.eggCount--;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D c)
@@ -36,5 +39,6 @@ public class Projectile : MonoBehaviour
 
         p.currentC.a *= 0.8f;
         p.GetComponent<Renderer>().material.color = p.currentC;
+        Controller.eggCount--;
     }
 }

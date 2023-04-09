@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class Controller : MonoBehaviour
 {
@@ -6,7 +7,13 @@ public class Controller : MonoBehaviour
     [SerializeField] private GameObject spawnCreature;
     public static int spawnCount = 0;
     public static int maxSpawn = 10;
-    
+    public static int heroCollisionCount = 0;
+    public static int eggCount = 0;
+    public static int planeDestroyed = 0;
+    public TextMeshProUGUI heroTxt;
+    public TextMeshProUGUI eggTxt;
+    public TextMeshProUGUI enemyTxt;
+
     void Start()
     {
         c = Camera.main;
@@ -16,6 +23,8 @@ public class Controller : MonoBehaviour
     {
         while(spawnCount < maxSpawn)
             spawn();
+
+        UpdateText();
     }
 
     void spawn()
@@ -34,5 +43,12 @@ public class Controller : MonoBehaviour
         
         Instantiate(spawnCreature, spawnPt, Quaternion.identity);
         spawnCount++;
+    }
+
+    void UpdateText()
+    {
+        heroTxt.text = $"Hero\nControl: {(Hero.mouseControl ? "Mouse" : "Keyboard")}\nEnemy Collision : {heroCollisionCount}";
+        eggTxt.text = $"Egg\nCount: {eggCount}";
+        enemyTxt.text = $"Enemy\nCount: {spawnCount}\nTotal Destroyed: {planeDestroyed}";
     }
 }
